@@ -1,6 +1,17 @@
-2 types of posts - 1 blog post / 1 snippet code 
-notifications for likes on posts 
-level perks 
-Dev.to 
-web socket - kind of like live posting
-leveling up on persist in backend - front functions for parsing 
+ {{#if loggedIn}}
+        {{else}}
+      <h2 class='signin-prompt'><a href='/api/login'>Sign In</a> Or
+        <a href='/api/login'> Sign Up</a> To Comment Or Post</h2>
+          
+        {{/if}}
+
+{{#each posts as |post|}}
+  <a href='/{{post.id}}'>
+    <div class='card'>
+      <div class='car-header'>
+        <h1>{{post.title}}</h1>
+        <p>Posted by {{post.user.user_name}} on {{format_date created_at}}</p>
+      </div>
+    </div>
+  </a>
+{{/each}}

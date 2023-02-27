@@ -14,21 +14,32 @@
       href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'
     />
     <title>Document</title>
-    <link rel='stylesheet' href='/homepage/style.css' />
+    <link rel='stylesheet' href='/style.css' />
   </head>
   <body>
     <nav class='navbar-section'>
       <ul class='links'>
-        <li><a href='#'>Home</a></li>
-        <li><a href='#'>Dashboard</a></li>
-        <li><a href='#'>Logout</a></li>
+        <li><a href='/'>Home</a></li>
+        {{#if loggedIn}}
+          <li><a href='/api/dashboard'>Dashboard</a></li>
+          <li><a href='/api/create/'>Create New Post</a></li>
+          <li><button class='logout-button' href=''>Logout</button></li>
+        {{else}}
+          <li><a href='/api/login'>Login</a></li>
+        {{/if}}
       </ul>
-      <div class='logo'>The Tech Blog <i class='fa-solid fa-sim-card'></i></div>
+      <a style='color: black;' href='/'><div class='logo'>The Tech Blog
+          <i class='fa-solid fa-sim-card'></i></div></a>
     </nav>
     <main>
       <div class='post-section'>
+
         {{{body}}}
       </div>
     </main>
+    {{#if loggedIn}}
+      <script src='/js/logout.js'></script>
+
+    {{/if}}
   </body>
 </html>
